@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap');
+
+/* Testing */
+.borda {
+    border: 2px solid red;
+
+}
+
+.borda-alternativa {
+    border: 1px solid blue;
+
+}
+
+/* Estilização principal*/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 650px;
+}
+
+main h1 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+#create-table {
+    transition: 300ms;
+    border: none;
+    background-color: rgb(79, 79, 251);
+    color: white;
+    width: 70px;
+    height: 70px;
+    font-weight: bold;
+    border-radius: 100px;
+    font-size: 1.3em;
+}
+
+#create-row {
+    width: 100%;
+    background-color: #484f5600;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 1.1em;
+
+}
+
+.table-button {
+    background-color: #484f56;
+
+}
+
+/* Tabela, conteúdo principal */
+table {
+    display: none;
+
+}
+
+table input {
+    border: 1px solid gray;
+    border-radius: 20px;
+    text-align: center;
+
+}
+
+.enter {
+    background-color: rgb(79, 79, 251);
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 10px;
+
+}
+
+.change-amount-positive {
+    background-color: green;
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: white;
+
+}
+
+.change-amount-negative {
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: white;
+
+}
+
+/* Minha marca d'água */
+
+footer {
+    transition: padding 400ms, font-size 400ms;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    cursor: default;
+}
+
+.strong {
+    font-weight: bold;
+
+}
+
+footer:hover {
+    padding: 5px 15px;
+    font-size: 1.1em;
+}

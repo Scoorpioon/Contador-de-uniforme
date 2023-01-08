@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <title>Contador de uniforme</title>
+</head>
+<body>
+    <main>
+        <h1>Contador de uniforme</h1>
+
+        <button onClick="criarTabela()" id="create-table">+</button>
+
+        <table class="table" id="tabela">
+            <thead class="table-header table-dark table-bordered">
+                <tr>
+                    <th>Peça de roupa</th>
+                    <th>Tamanho</th>
+                    <th>Quantidade</th>
+                    <th class="table-button"><button id="create-row" onClick="criarLinha()">+</button></th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <span>Desenvolvido por <span class="strong">Gabriel Alexandre</span></span>
+    </footer>
+</body>
+<script>
+    var botao = document.getElementById('create-table');
+    var tabela = document.getElementById('tabela')
+    var corpo = document.getElementById('table-body')
+    var numeroDaLinha = 1
+
+    var criarTabela = () => {
+        botao.style.display = 'none'
+        tabela.style.display = 'table'
+        
+    }
+
+    var criarLinha = () => {
+        var linha = document.createElement('tr')
+
+        linha.setAttribute('id', `linha-${numeroDaLinha}`)
+        numeroDaLinha++
+        console.log(`Linha criada: ${numeroDaLinha - 1}`)
+
+        corpo.appendChild(linha)
+        
+        var linhaAtual = document.getElementById(`linha-${numeroDaLinha - 1}`)
+        
+        //Table datas
+        linha.appendChild(document.createElement('td'))
+        var campoRoupa = linhaAtual.firstChild
+        campoRoupa.setAttribute('id', `data-1`)
+
+        linha.appendChild(document.createElement('td'))
+        var campoTamanho = linhaAtual.lastChild
+        campoTamanho.setAttribute('id', `data-2`)
+
+        //Input do nome
+        var entradaDaLinha1 = document.createElement('input')
+
+        entradaDaLinha1.setAttribute('placeholder', 'Nome da roupa...')
+
+        //Input do tamanho
+        var entradaDaLinha2 = document.createElement('input')
+
+        entradaDaLinha2.setAttribute('placeholder', 'Tamanho da roupa...')
+
+        campoRoupa.appendChild(entradaDaLinha1)
+        campoTamanho.appendChild(entradaDaLinha2)
+    }
+</script>
+</html>
