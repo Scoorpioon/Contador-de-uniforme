@@ -32,7 +32,7 @@ main {
     align-items: center;
     width: 100%;
     padding: 5px;
-    margin-bottom: 650px;
+    margin-bottom: 450px;
 }
 
 main h1 {
@@ -65,20 +65,44 @@ main h1 {
 
 .table-button {
     background-color: #484f56;
-
+    width: 75px;
 }
 
 /* Tabela, conteúdo principal */
 table {
     display: none;
+}
+
+table #data-3 {
+    display: flex;
+    padding: 0;
+    /* border: 1px solid red; */
+    width: 250px;
+    gap: 10px;
+}
+
+.divQuantidade {
+    display: flex;
+    gap: 5px;
 
 }
 
+.valueInput {
+    position: relative;
+    width: 50%;
+    margin-left: 30px;
+    height: 27px;
+    top: 10.5px;
+    border: 1px solid black;
+    border-radius: 0;
+}
+
 table input {
+    width: 100%;
     border: 1px solid gray;
     border-radius: 20px;
     text-align: center;
-
+    
 }
 
 .enter {
@@ -96,6 +120,7 @@ table input {
     height: 40px;
     border: none;
     color: white;
+    font-weight: bold;
 
 }
 
@@ -105,6 +130,7 @@ table input {
     height: 40px;
     border: none;
     color: white;
+    font-weight: bold;
 
 }
 
@@ -114,6 +140,7 @@ footer {
     transition: padding 400ms, font-size 400ms;
     border: 2px solid black;
     padding: 5px;
+    margin-bottom: 10px;
     border-radius: 20px;
     color: white;
     background-color: black;
@@ -128,4 +155,12 @@ footer {
 footer:hover {
     padding: 5px 15px;
     font-size: 1.1em;
+}
+
+@media (max-width: 408px) {
+    main h1 {
+        font-size: 2.1em; 
+
+    }
+
 }
