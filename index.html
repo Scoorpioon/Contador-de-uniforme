@@ -38,6 +38,16 @@
     var corpo = document.getElementById('table-body')
     var numeroDaLinha = 1
 
+    var aumentarValor = () => {
+        let valor = document.getElementById('')
+
+    }
+
+    var diminuirValor = () => {
+        
+         
+    }
+
     var criarTabela = () => {
         botao.style.display = 'none'
         tabela.style.display = 'table'
@@ -48,8 +58,8 @@
         var linha = document.createElement('tr')
 
         linha.setAttribute('id', `linha-${numeroDaLinha}`)
+        console.log(`Linha criada: ${numeroDaLinha}`)
         numeroDaLinha++
-        console.log(`Linha criada: ${numeroDaLinha - 1}`)
 
         corpo.appendChild(linha)
         
@@ -61,21 +71,42 @@
         campoRoupa.setAttribute('id', `data-1`)
 
         linha.appendChild(document.createElement('td'))
-        var campoTamanho = linhaAtual.lastChild
+        var campoTamanho = linhaAtual.children[1]
         campoTamanho.setAttribute('id', `data-2`)
+
+        linha.appendChild(document.createElement('td'))
+        var campoQuantidade = linhaAtual.lastChild
+        campoQuantidade.setAttribute('id', `data-3`)        
 
         //Input do nome
         var entradaDaLinha1 = document.createElement('input')
-
         entradaDaLinha1.setAttribute('placeholder', 'Nome da roupa...')
 
         //Input do tamanho
         var entradaDaLinha2 = document.createElement('input')
-
         entradaDaLinha2.setAttribute('placeholder', 'Tamanho da roupa...')
 
+        //Input da quantidade
+        var entradaDaQuantidade = document.createElement('input')
+        entradaDaQuantidade.setAttribute('class', 'valueInput')
+
+        var divQuantidade = document.createElement('div')
+        divQuantidade.setAttribute('class', 'divQuantidade')
+
+        var botaoPositivo = document.createElement('button')
+        botaoPositivo.setAttribute('class', 'change-amount-positive'), botaoPositivo.setAttribute('onClick', 'aumentarValor()')
+        botaoPositivo.textContent = '+'
+
+        var botaoNegativo = document.createElement('button')
+        botaoNegativo.setAttribute('class', 'change-amount-negative'), botaoNegativo.setAttribute('onClick', 'diminuirValor()')
+        botaoNegativo.textContent = '-'
+
+        entradaDaQuantidade.setAttribute('value', 0)
+
+        divQuantidade.appendChild(botaoPositivo), divQuantidade.appendChild(botaoNegativo)
         campoRoupa.appendChild(entradaDaLinha1)
         campoTamanho.appendChild(entradaDaLinha2)
+        campoQuantidade.appendChild(entradaDaQuantidade), campoQuantidade.appendChild(divQuantidade)
     }
 </script>
 </html>
