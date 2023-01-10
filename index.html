@@ -38,16 +38,6 @@
     var corpo = document.getElementById('table-body')
     var numeroDaLinha = 1
 
-    var aumentarValor = () => {
-        let valor = document.getElementById('')
-
-    }
-
-    var diminuirValor = () => {
-        
-         
-    }
-
     var criarTabela = () => {
         botao.style.display = 'none'
         tabela.style.display = 'table'
@@ -94,11 +84,11 @@
         divQuantidade.setAttribute('class', 'divQuantidade')
 
         var botaoPositivo = document.createElement('button')
-        botaoPositivo.setAttribute('class', 'change-amount-positive'), botaoPositivo.setAttribute('onClick', 'aumentarValor()')
+        botaoPositivo.setAttribute('class', `change-amount-positive button-positive-${numeroDaLinha - 1}`), botaoPositivo.setAttribute('onClick', 'aumentarValor()')
         botaoPositivo.textContent = '+'
 
         var botaoNegativo = document.createElement('button')
-        botaoNegativo.setAttribute('class', 'change-amount-negative'), botaoNegativo.setAttribute('onClick', 'diminuirValor()')
+        botaoNegativo.setAttribute('class', `change-amount-negative button-negative-${numeroDaLinha - 1}`), botaoNegativo.setAttribute('onClick', 'diminuirValor()')
         botaoNegativo.textContent = '-'
 
         entradaDaQuantidade.setAttribute('value', 0)
@@ -107,6 +97,24 @@
         campoRoupa.appendChild(entradaDaLinha1)
         campoTamanho.appendChild(entradaDaLinha2)
         campoQuantidade.appendChild(entradaDaQuantidade), campoQuantidade.appendChild(divQuantidade)
+
+        console.log(botaoPositivo.className[39]) //Pega apenas o número na classe do botão que identifica a linha
+    }
+
+    var aumentarValor = () => {
+        var numeroDaLinha = 0
+        var linha = document.getElementsByClassName('change-amount-positive')
+        var campoQuantidade = document.getElementsByClassName('valueInput')
+
+        linha[0].addEventListener('click', event => {
+            if(event.target.className[39] == 1) {
+                campoQuantidade[0].value++
+            }
+        })
+    }
+
+    var diminuirValor = () => {
+
     }
 </script>
 </html>
