@@ -32,7 +32,7 @@ main {
     align-items: center;
     width: 100%;
     padding: 5px;
-    margin-bottom: 450px;
+    margin-bottom: 50px;
 }
 
 main h1 {
@@ -157,9 +157,14 @@ footer:hover {
     font-size: 1.1em;
 }
 
-@media (max-width: 408px) {
+@media (max-width: 844px) {
     main h1 {
         font-size: 2.1em; 
+
+    }
+
+    main {
+        margin-bottom: 50px;  
 
     }
 
