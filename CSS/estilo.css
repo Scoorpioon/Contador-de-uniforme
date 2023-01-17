@@ -36,9 +36,13 @@ main {
 }
 
 main h1 {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 15px;
     font-size: 2.5em;
     margin-bottom: 50px;
     font-weight: bold;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 #create-table {
@@ -84,7 +88,6 @@ table #data-3 {
 .divQuantidade {
     display: flex;
     gap: 5px;
-
 }
 
 .valueInput {
@@ -93,7 +96,9 @@ table #data-3 {
     margin-left: 30px;
     height: 27px;
     top: 10.5px;
-    border: 1px solid black;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 1.2em;  
     border-radius: 0;
 }
 
