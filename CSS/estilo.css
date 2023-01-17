@@ -139,6 +139,21 @@ table input {
 
 }
 
+.botao-deletar {
+    background-color: rgb(57, 57, 57);
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    height: 40px;
+
+}
+
+table #data-4 {
+    padding: 0;
+
+}
+
 /* Minha marca d'água */
 
 footer {
@@ -174,3 +189,5 @@ footer:hover {
     }
 
 }
+
+/* Houve uma mesclagem de idiomas para facilitar algumas escritas. */
