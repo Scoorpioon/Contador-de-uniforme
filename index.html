@@ -43,78 +43,119 @@
         tabela.style.display = 'table'
         
     }
+    
+    function aumentarValor(numeroBotao, operacao) {
+        var botaoClicado = document.getElementById(`quantidade-${numeroBotao}`)
 
-    var criarLinha = () => {
-        var linha = document.createElement('tr')
+        if(operacao == '+') {
+            botaoClicado.value++
+        } else if(operacao == '-') {
+            if(botaoClicado.value > 0) {
+                botaoClicado.value--
 
-        linha.setAttribute('id', `linha-${numeroDaLinha}`)
-        console.log(`Linha criada: ${numeroDaLinha}`)
-        numeroDaLinha++
-
-        corpo.appendChild(linha)
-        
-        var linhaAtual = document.getElementById(`linha-${numeroDaLinha - 1}`)
-        
-        //Table datas
-        linha.appendChild(document.createElement('td'))
-        var campoRoupa = linhaAtual.firstChild
-        campoRoupa.setAttribute('id', `data-1`)
-
-        linha.appendChild(document.createElement('td'))
-        var campoTamanho = linhaAtual.children[1]
-        campoTamanho.setAttribute('id', `data-2`)
-
-        linha.appendChild(document.createElement('td'))
-        var campoQuantidade = linhaAtual.lastChild
-        campoQuantidade.setAttribute('id', `data-3`)        
-
-        //Input do nome
-        var entradaDaLinha1 = document.createElement('input')
-        entradaDaLinha1.setAttribute('placeholder', 'Nome da roupa...')
-
-        //Input do tamanho
-        var entradaDaLinha2 = document.createElement('input')
-        entradaDaLinha2.setAttribute('placeholder', 'Tamanho da roupa...')
-
-        //Input da quantidade
-        var entradaDaQuantidade = document.createElement('input')
-        entradaDaQuantidade.setAttribute('class', 'valueInput')
-
-        var divQuantidade = document.createElement('div')
-        divQuantidade.setAttribute('class', 'divQuantidade')
-
-        var botaoPositivo = document.createElement('button')
-        botaoPositivo.setAttribute('class', `change-amount-positive button-positive-${numeroDaLinha - 1}`), botaoPositivo.setAttribute('onClick', 'aumentarValor()')
-        botaoPositivo.textContent = '+'
-
-        var botaoNegativo = document.createElement('button')
-        botaoNegativo.setAttribute('class', `change-amount-negative button-negative-${numeroDaLinha - 1}`), botaoNegativo.setAttribute('onClick', 'diminuirValor()')
-        botaoNegativo.textContent = '-'
-
-        entradaDaQuantidade.setAttribute('value', 0)
-
-        divQuantidade.appendChild(botaoPositivo), divQuantidade.appendChild(botaoNegativo)
-        campoRoupa.appendChild(entradaDaLinha1)
-        campoTamanho.appendChild(entradaDaLinha2)
-        campoQuantidade.appendChild(entradaDaQuantidade), campoQuantidade.appendChild(divQuantidade)
-
-        console.log(botaoPositivo.className[39]) //Pega apenas o número na classe do botão que identifica a linha
-    }
-
-    var aumentarValor = () => {
-        var numeroDaLinha = 0
-        var linha = document.getElementsByClassName('change-amount-positive')
-        var campoQuantidade = document.getElementsByClassName('valueInput')
-
-        linha[0].addEventListener('click', event => {
-            if(event.target.className[39] == 1) {
-                campoQuantidade[0].value++
             }
-        })
+        }
     }
 
-    var diminuirValor = () => {
+    var criarLinha = (getValue) => {
+        if(getValue != false) {
+            var linha = document.createElement('tr')
 
+            linha.setAttribute('id', `linha-${numeroDaLinha}`), linha.setAttribute('class', 'linha')
+            console.log(`Linha criada: ${numeroDaLinha}`)
+            numeroDaLinha++
+
+            corpo.appendChild(linha)
+            
+            var linhaAtual = document.getElementById(`linha-${numeroDaLinha - 1}`)
+            
+            //Table datas
+            linha.appendChild(document.createElement('td'))
+            var campoRoupa = linhaAtual.firstChild
+            campoRoupa.setAttribute('id', `data-1`)
+
+            linha.appendChild(document.createElement('td'))
+            var campoTamanho = linhaAtual.children[1]
+            campoTamanho.setAttribute('id', `data-2`)
+
+            linha.appendChild(document.createElement('td'))
+            var campoQuantidade = linhaAtual.lastChild
+            campoQuantidade.setAttribute('id', `data-3`)        
+
+            //Input do nome
+            var entradaDaLinha1 = document.createElement('input')
+            entradaDaLinha1.setAttribute('placeholder', 'Nome da roupa...'), entradaDaLinha1.setAttribute('id', `entradaNome-${numeroDaLinha - 1}`)
+
+            //Input do tamanho
+            var entradaDaLinha2 = document.createElement('input')
+            entradaDaLinha2.setAttribute('placeholder', 'Tamanho da roupa...')
+
+            //Input da quantidade
+            var entradaDaQuantidade = document.createElement('input')
+            entradaDaQuantidade.setAttribute('class', 'valueInput')
+            entradaDaQuantidade.setAttribute('id', `quantidade-${numeroDaLinha - 1}`)
+
+            var divQuantidade = document.createElement('div')
+            divQuantidade.setAttribute('class', 'divQuantidade')
+
+            //Botões de aumentar/diminuir
+            var botaoPositivo = document.createElement('button')
+            botaoPositivo.setAttribute('class', `change-amount-positive button-positive`)
+            botaoPositivo.setAttribute('id', `button-positive`)
+            botaoPositivo.textContent = '+'
+
+            var botaoNegativo = document.createElement('button')
+            botaoNegativo.setAttribute('class', `change-amount-negative button-negative`)
+            botaoNegativo.setAttribute('id', `button-negative`)
+            botaoNegativo.textContent = '-'
+
+            entradaDaQuantidade.setAttribute('value', 0)
+
+            divQuantidade.appendChild(botaoPositivo), divQuantidade.appendChild(botaoNegativo)
+            campoRoupa.appendChild(entradaDaLinha1)
+            campoTamanho.appendChild(entradaDaLinha2)
+            campoQuantidade.appendChild(entradaDaQuantidade), campoQuantidade.appendChild(divQuantidade)
+        }
+        //console.log(botaoPositivo.className[39]) - Pega apenas o número na classe do botão que identifica a linha
+
+        //Adicionar evento aos botões
+        if(document.getElementById('linha-1')) {
+            var botoesPositivos = document.getElementsByClassName('button-positive')
+            botoesPositivos = Array.from(botoesPositivos)
+
+            var botoesNegativos = document.getElementsByClassName('button-negative')
+            botoesNegativos = Array.from(botoesNegativos)
+
+            var numeroPositivo = 1
+            var numeroNegativo = 1
+
+            botoesPositivos.forEach((element) => {
+                var buttons = document.getElementsByClassName('button-positive')
+
+                element.setAttribute('onClick', `aumentarValor(${numeroPositivo}, '+')`)
+                
+                numeroPositivo++
+            }), botoesNegativos.forEach((element) => {
+                var buttons = document.getElementsByClassName('button-negative')
+
+                element.setAttribute('onClick', `aumentarValor(${numeroNegativo}, '-')`)
+                
+                numeroNegativo++
+            })
+        }
+    }
+
+    function pegarNumeros(str) {
+        var numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        var numerosEncontrados = [];
+        for(var c = 0; c <= str.length; c++) {
+            if(str[c] in numeros) {
+                numerosEncontrados.push(str[c])
+            }
+        }
+
+        numerosEncontrados = numerosEncontrados.toString().replaceAll(',', '')
+        return numerosEncontrados
     }
 </script>
 </html>
