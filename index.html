@@ -44,17 +44,42 @@
         
     }
     
-    function aumentarValor(numeroBotao, operacao) {
+    var alterarValor = (numeroBotao, operacao) => {
         var botaoClicado = document.getElementById(`quantidade-${numeroBotao}`)
+       /*var letrasMinusculas = ['abcdefghijklmnopqrstuvwxyz']
+        var letrasMaiusculas = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']*/
 
         if(operacao == '+') {
             botaoClicado.value++
+            botaoClicado.style.borderBottom = '1px solid blue'
         } else if(operacao == '-') {
             if(botaoClicado.value > 0) {
                 botaoClicado.value--
-
             }
         }
+
+        if(botaoClicado.value == 0) {
+            botaoClicado.style.borderBottom = '1px solid gray'
+
+        }
+
+       /*for(var c = 0; c <= botaoClicado.value.length; c++) {
+            if(botaoClicado.value[c] in letrasMinusculas || botaoClicado.value[c] in letrasMaiusculas) {
+                botaoClicado.style.backgroundColor = '#ffb8b8'
+                botaoClicado.style.borderBottom = '1px solid red'
+
+            } else if(botaoClicado.value[c] >= 0) {
+                botaoClicado.style.borderBottom = '1px solid blue'
+                botaoClicado.style.backgroundColor = 'none'
+
+            }
+        }*/
+    }
+
+    var excluirLinha = (numeroLinha) => {
+        var linha = document.getElementById(`linha-${numeroLinha}`)
+        console.log(`Linha excluida: ${numeroLinha}`)
+        linha.remove()
     }
 
     var criarLinha = (getValue) => {
@@ -79,8 +104,12 @@
             campoTamanho.setAttribute('id', `data-2`)
 
             linha.appendChild(document.createElement('td'))
-            var campoQuantidade = linhaAtual.lastChild
-            campoQuantidade.setAttribute('id', `data-3`)        
+            var campoQuantidade = linhaAtual.children[2]
+            campoQuantidade.setAttribute('id', `data-3`)    
+            
+            linha.appendChild(document.createElement('td'))
+            var campoAlterar = linhaAtual.lastChild
+            campoAlterar.setAttribute('id', `data-4`)
 
             //Input do nome
             var entradaDaLinha1 = document.createElement('input')
@@ -115,10 +144,16 @@
             campoRoupa.appendChild(entradaDaLinha1)
             campoTamanho.appendChild(entradaDaLinha2)
             campoQuantidade.appendChild(entradaDaQuantidade), campoQuantidade.appendChild(divQuantidade)
+
+            //Botão de excluir
+            var botaoExcluir = document.createElement('button')
+            botaoExcluir.setAttribute('class', 'botao-deletar')
+            botaoExcluir.textContent = 'X'
+            campoAlterar.appendChild(botaoExcluir)
         }
         //console.log(botaoPositivo.className[39]) - Pega apenas o número na classe do botão que identifica a linha
 
-        //Adicionar evento aos botões
+        //Adicionar evento aos botões de aumentar e diminuir
         if(document.getElementById('linha-1')) {
             var botoesPositivos = document.getElementsByClassName('button-positive')
             botoesPositivos = Array.from(botoesPositivos)
@@ -132,15 +167,25 @@
             botoesPositivos.forEach((element) => {
                 var buttons = document.getElementsByClassName('button-positive')
 
-                element.setAttribute('onClick', `aumentarValor(${numeroPositivo}, '+')`)
+                element.setAttribute('onClick', `alterarValor(${numeroPositivo}, '+')`)
                 
                 numeroPositivo++
             }), botoesNegativos.forEach((element) => {
                 var buttons = document.getElementsByClassName('button-negative')
 
-                element.setAttribute('onClick', `aumentarValor(${numeroNegativo}, '-')`)
+                element.setAttribute('onClick', `alterarValor(${numeroNegativo}, '-')`)
                 
                 numeroNegativo++
+            })
+            
+            //Adicionar evento ao botão de excluir
+            var botoesExcluir = document.getElementsByClassName('botao-deletar')
+            botoesExcluir = Array.from(botoesExcluir)
+            var numeroLinha = 1
+    
+            botoesExcluir.forEach((element) => {
+                element.setAttribute('onClick', `excluirLinha(${numeroLinha})`)
+                numeroLinha++
             })
         }
     }
