@@ -190,4 +190,16 @@ footer:hover {
 
 }
 
+@media (max-width: 667px) {
+    table #data-4 {
+        text-align: center;
+    }
+
+    .botao-deletar {
+        width: 75%;
+        margin-top: 1px;
+
+    }
+}
+
 /* Houve uma mesclagem de idiomas para facilitar algumas escritas. */
