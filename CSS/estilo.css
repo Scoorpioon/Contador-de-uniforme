@@ -190,7 +190,7 @@ footer:hover {
 
 }
 
-@media (max-width: 667px) {
+@media (max-width: 770px) {
     table #data-4 {
         text-align: center;
     }
