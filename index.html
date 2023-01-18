@@ -79,7 +79,8 @@
     var excluirLinha = (numeroLinha) => {
         var linha = document.getElementById(`linha-${numeroLinha}`)
         console.log(`Linha excluida: ${numeroLinha}`)
-        linha.remove()
+        //linha.remove() Remover linha
+        linha.style.display = 'none' //Faz a linha desaparecer, mas ela ainda se mantém no site.
     }
 
     var criarLinha = (getValue) => {
@@ -178,16 +179,18 @@
                 numeroNegativo++
             })
             
-            //Adicionar evento ao botão de excluir
-            var botoesExcluir = document.getElementsByClassName('botao-deletar')
-            botoesExcluir = Array.from(botoesExcluir)
-            var numeroLinha = 1
-    
-            botoesExcluir.forEach((element) => {
-                element.setAttribute('onClick', `excluirLinha(${numeroLinha})`)
-                numeroLinha++
-            })
+            
         }
+        //Adicionar evento ao botão de excluir
+        var botoesExcluir = document.getElementsByClassName('botao-deletar')
+        console.log(botoesExcluir)
+        botoesExcluir = Array.from(botoesExcluir)
+        var numeroLinha = 1
+
+        botoesExcluir.forEach((element) => {
+            element.setAttribute('onClick', `excluirLinha(${numeroLinha})`)
+            numeroLinha++
+        })
     }
 
     function pegarNumeros(str) {
